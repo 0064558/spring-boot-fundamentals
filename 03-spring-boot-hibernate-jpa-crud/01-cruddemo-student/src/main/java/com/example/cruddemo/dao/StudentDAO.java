@@ -4,4 +4,5 @@ import com.example.cruddemo.entities.Student;
 
 public interface StudentDAO {
     void save(Student student);
+    Student findById(Integer id);
 }
