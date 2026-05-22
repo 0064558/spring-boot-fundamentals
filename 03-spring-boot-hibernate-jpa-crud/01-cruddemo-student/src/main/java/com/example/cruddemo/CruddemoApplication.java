@@ -31,7 +31,7 @@ public class CruddemoApplication {
 	private void quertForStudentsByLastName(StudentDAO studentDAO) {
 		// get a list of students
 		List<Student> students = new ArrayList<>();
-		students = studentDAO.findByLastName("Vieira");
+		students = studentDAO.findByLastName("Brown");
 
 		// display list of students
 		for (Student student : students) {
