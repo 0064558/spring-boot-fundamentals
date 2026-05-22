@@ -20,11 +20,23 @@ public class CruddemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			//createStudent(studentDAO);
-			//createMultipleStudents(studentDAO);
-			//readStudent(studentDAO);
-			queryForStudents(studentDAO);
+			// createStudent(studentDAO);
+			// createMultipleStudents(studentDAO);
+			// readStudent(studentDAO);
+			// queryForStudents(studentDAO);
+			quertForStudentsByLastName(studentDAO);
 		};
+	}
+
+	private void quertForStudentsByLastName(StudentDAO studentDAO) {
+		// get a list of students
+		List<Student> students = new ArrayList<>();
+		students = studentDAO.findByLastName("Vieira");
+
+		// display list of students
+		for (Student student : students) {
+			System.out.println(student);
+		}
 	}
 
 	private void queryForStudents(StudentDAO studentDAO) {
@@ -34,8 +46,8 @@ public class CruddemoApplication {
 
 		// display a list of students
 		System.out.println("All Students: ");
-		for (Student s : students) {
-			System.out.println(s);
+		for (Student student : students) {
+			System.out.println(student);
 		}
 	}
 
