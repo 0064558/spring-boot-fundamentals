@@ -21,7 +21,6 @@ public class StudentDAOImpl implements StudentDAO {
         this.entityManager = entityManager;
     }
 
-    // implement save method
     @Override
     @Transactional
     public void save(Student student) {
@@ -58,5 +57,22 @@ public class StudentDAOImpl implements StudentDAO {
     @Transactional
     public void update(Student student) {
         entityManager.merge(student);
+    }
+
+    @Override
+    @Transactional
+    public void delete(Integer id) {
+        // retrieve the student
+        Student student = entityManager.find(Student.class, id);
+
+        // delete the student
+        entityManager.remove(student);
+    }
+
+    @Override
+    @Transactional
+    public int deleteAll() {
+        int numRowsDeleted = entityManager.createQuery("DELETE FROM Student").executeUpdate();
+        return numRowsDeleted;
     }
 }
