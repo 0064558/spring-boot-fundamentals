@@ -39,7 +39,7 @@ public class StudentController {
     }
 
     // Add a excpetion handler using @ExceptionHandler
-    @ExceptionHandler
+   @ExceptionHandler
     public ResponseEntity<StudentErrorResponse> handleExcpetion(StudentNotFoundException exc) {
         // create a StudentErrorResponse
         StudentErrorResponse error = new StudentErrorResponse(
