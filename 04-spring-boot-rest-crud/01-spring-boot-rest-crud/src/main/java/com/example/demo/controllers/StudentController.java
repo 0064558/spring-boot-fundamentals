@@ -37,30 +37,4 @@ public class StudentController {
 
         return students.get(studentId);
     }
-
-    // Add a excpetion handler using @ExceptionHandler
-   @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleExcpetion(StudentNotFoundException exc) {
-        // create a StudentErrorResponse
-        StudentErrorResponse error = new StudentErrorResponse(
-                HttpStatus.NOT_FOUND.value(),
-                exc.getMessage(),
-                System.currentTimeMillis());
-
-        // return ResponseEntity
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
-    }
-
-    // add another exception handler... to catch any exception
-    @ExceptionHandler
-    public ResponseEntity<StudentErrorResponse> handleExcpetion(Exception exc) {
-        // create a StudentErrorResponse
-        StudentErrorResponse error = new StudentErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                exc.getMessage(),
-                System.currentTimeMillis());
-
-        // return ResponseEntity
-        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-    }
 }
